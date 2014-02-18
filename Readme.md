@@ -38,11 +38,11 @@ For this, an algorithm like
 [*Nearest Neighbor*](http://en.wikipedia.org/wiki/Nearest_neighbour_algorithm)
 can be used, selecting the free vertex whose distance from the tour is the greatest.
 
-Suppose *C* as the distance between two vertexes, *i* and *j* as vertexes already in
-the tour and *r* as the free vertex selected as potinted above. The vertex *r* must
-be inserted in the tour obeying the follow equation 
+Suppose **C** as the distance between two vertexes, **i** and **j** as vertexes
+already in the tour and **r** as the free vertex selected as potinted above. The
+vertex **r** must be inserted in the tour obeying the follow equation 
 
-![min tour](http://www.sciweavers.org/tex2img.php?eq=%5Cmin%20C_%7Bir%7D%20%2B%20C_%7Bjr%7D%20-%20C_%7Bir%7D&bc=White&fc=Black&im=gif&fs=12&ff=arev&edit=0)
+![](http://bit.ly/1mrjqvm)
 
 To understand better the problem and to compare the performance of different data
 structures for indexing (storage of the free vertexes) and the tour, two different
@@ -51,3 +51,16 @@ stored with simple lists (for a heap and for spacial indexing, respectively); an
 fastest, where the free vertexes were stored in a 
 [B-Tree](http://en.wikipedia.org/wiki/B-tree), as a priority queue, and the tour was
 stored in a [K-d Tree](http://en.wikipedia.org/wiki/K-d_tree), for spacial indexing.
+
+#### First version - Lists
+
+In this first implementation, both sets of vertexes, the free ones and the tour, are
+stored using simple lists. The pour performance of this implementation comes from 
+the necessity of a full transversal of the lists for some operations over them.
+
+A naive implementation would spend ![O2](http://bit.ly/1bizBq1) to search for the
+farthest vertex from the tour and ![O3](http://bit.ly/1c1eVxI) to run the whole
+algorithm, i.e., to execute *FI* until all free vertexes are added to the tour.
+To avoid repeated calculations and to keep the cost as ![O2](http://bit.ly/1bizBq1),
+when the farthest vertex is being searched, the distances between the free vertexes
+and the tour can be updated considering only the last inserted vertex of the tour.
