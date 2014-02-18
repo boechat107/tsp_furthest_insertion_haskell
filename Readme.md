@@ -1,4 +1,4 @@
-# Travelling Salesman Problem (Haskell version)
+# Travelling Salesman Problem <br />(Haskell version)
 
 This work was the result of the
 [Programming Languages 2](http://www.inf.ufes.br/~raulh/) course's project.
@@ -19,4 +19,35 @@ vertices or cities):
 * [*Farthest Insertion*](http://users.cs.cf.ac.uk/C.L.Mumford/howard/FarthestInsertion.html)
 (FI)
 * [*Double Minimum Spanning Tree*](http://en.wikipedia.org/wiki/Minimum_spanning_tree)
-(DMST) 
+(DMST)
+
+## Implementations and efficiency conjectures
+
+### Farthest Insertion
+
+The Farthest Insertion's heuristic consists of two basic actions:
+
+* searching for the farthest free vertex (one that isn't yet in the tour) from the
+tour;
+* inserting the selected vertex in the tour in a way that the new tour is the
+shortest possible path.
+
+The distance between a free vertex and the tour is the distance between this vertex
+and the closest vertex of the tour.
+For this, an algorithm like 
+[*Nearest Neighbor*](http://en.wikipedia.org/wiki/Nearest_neighbour_algorithm)
+can be used, selecting the free vertex whose distance from the tour is the greatest.
+
+Suppose *C* as the distance between two vertexes, *i* and *j* as vertexes already in
+the tour and *r* as the free vertex selected as potinted above. The vertex *r* must
+be inserted in the tour obeying the follow equation 
+
+![min tour](http://www.sciweavers.org/tex2img.php?eq=%5Cmin%20C_%7Bir%7D%20%2B%20C_%7Bjr%7D%20-%20C_%7Bir%7D&bc=White&fc=Black&im=gif&fs=12&ff=arev&edit=0)
+
+To understand better the problem and to compare the performance of different data
+structures for indexing (storage of the free vertexes) and the tour, two different
+implementation were done: the simplest, where both free vertexes and tour were
+stored with simple lists (for a heap and for spacial indexing, respectively); and the
+fastest, where the free vertexes were stored in a 
+[B-Tree](http://en.wikipedia.org/wiki/B-tree), as a priority queue, and the tour was
+stored in a [K-d Tree](http://en.wikipedia.org/wiki/K-d_tree), for spacial indexing.
