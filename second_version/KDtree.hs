@@ -2,9 +2,10 @@
 module KDtree where
 import Data.List
 import ReadPoint
+import Foreign.C
 
-type Dimen = Point -> Double
-type HyperRectangle = ((Double, Double), (Double, Double))
+type Dimen = Point -> CDouble
+type HyperRectangle = (Point, Point)
 
 data Side = Before | After
 	deriving(Eq)

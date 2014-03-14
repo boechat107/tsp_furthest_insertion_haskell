@@ -1,9 +1,11 @@
 {-# OPTIONS_GHC -fglasgow-exts #-}
 module ReadPoint where
 import System.IO
-type Point = (Double,Double)
+import Foreign.C
 
-parseDouble:: (ReadS Double) = reads
+type Point = (CDouble,CDouble)
+
+parseDouble:: (ReadS CDouble) = reads
 
 readPoint:: String -> Point
 readPoint str = 

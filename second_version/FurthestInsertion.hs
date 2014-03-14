@@ -5,9 +5,10 @@ import Btree
 import KDtree
 import Data.List
 import Debug.Trace
+import Foreign.C
 
 
-data PointDist = PointDist (Point,Double)
+data PointDist = PointDist (Point,CDouble)
 --	deriving(Show)
 
 
