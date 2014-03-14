@@ -22,6 +22,20 @@ vertices or cities):
 (DMST)
 
 More theoretical discussion and analysis can be read 
-[here](http://boechat107.github.io/research%20problems/2014/02/25/travelling-salesman-problem-tsp/)
+[here](http://boechat107.github.io/research%20problems/2014/02/25/travelling-salesman-problem-tsp/).
+
+## Dependencies
+
+* `libghc-glut-dev` (tested with version 2.4.0.0)
 
 ## How to run
+
+Go to the folder of an implementation and type
+
+    make
+    ./OpenglFI d.50
+
+which runs the chose algorithm for a file with the coordinates of 50 cities and
+shows an OpenGL window representation of the final tour.
+
+![Tour for d.50](http://www.zimagez.com/miniature/screenshot-03142014-122334pm.php)
